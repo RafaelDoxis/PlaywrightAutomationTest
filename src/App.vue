@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import HelloWorld from './components/HelloWorld.vue'
 import TheWelcome from './components/TheWelcome.vue'
 import Navbar from './components/Navbar.vue'
+import DashboardPanel from './components/DashboardPanel.vue'
 
 const activeTab = ref('Home')
 </script>
@@ -11,22 +12,20 @@ const activeTab = ref('Home')
   <div class="app">
     <Navbar v-model="activeTab" />
 
-    <header>
-      <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-      <div class="wrapper">
-        <HelloWorld msg="You did it!" />
-      </div>
-    </header>
-
     <main>
       <section v-if="activeTab === 'Home'">
+        <header>
+          <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+
+          <div class="wrapper">
+            <HelloWorld msg="You did it!" />
+          </div>
+        </header>
         <TheWelcome />
       </section>
 
       <section v-else-if="activeTab === 'Dashboard'">
-        <h2>Dashboard</h2>
-        <p>Welcome to your dashboard. You can add widgets and stats here.</p>
+        <DashboardPanel />
       </section>
 
       <section v-else-if="activeTab === 'Profile'">
@@ -55,6 +54,7 @@ header {
 
 main {
   flex: 1;
+  width: 100%;
 }
 
 @media (min-width: 1024px) {
